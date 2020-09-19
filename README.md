@@ -4,7 +4,7 @@
 
 ![top_language] ![repo-size] ![license]
 
-### Projeto desenvolvido para a disciplina Desenvolvimento para dispositivos móveis utilizando o Android Studio, que é a IDE oficial para o desenvolvimento de aplicativos Android.
+### Projeto desenvolvido durante a disciplina Desenvolvimento para dispositivos móveis utilizando o Android Studio, que é a IDE oficial para o desenvolvimento de aplicativos Android.
 
 </div>
 
