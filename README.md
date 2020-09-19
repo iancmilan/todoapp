@@ -1,2 +1,7 @@
-# todoapp
-📱Projeto desenvolvido para a disciplina Desenvolvimento para dispositivos móveis, no qual o objetivo foi criar um aplicativo nativo.
+<div align="center">
+
+![Project Image](.github/todolist.png)
+
+### Projeto desenvolvido para a disciplina Desenvolvimento para dispositivos móveis utilizando o Android Studio, que é a IDE oficial para o desenvolvimento de aplicativos Android.
+
+</div>
