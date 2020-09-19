@@ -2,7 +2,7 @@
 
 ![img](.github/todolist.png)
 
-![top_language] ![repo-size]
+![top_language] ![repo-size] ![license]
 
 ### Projeto desenvolvido para a disciplina Desenvolvimento para dispositivos móveis utilizando o Android Studio, que é a IDE oficial para o desenvolvimento de aplicativos Android.
 
@@ -11,3 +11,4 @@
 <!-- Badges -->
 [top_language]: https://img.shields.io/github/languages/top/iancmilan/todoapp?style=flat-square
 [repo-size]: https://img.shields.io/github/repo-size/iancmilan/todoapp?style=flat-square
+[license]: https://img.shields.io/github/license/iancmilan/proffy?style=flat-square
