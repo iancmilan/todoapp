@@ -2,6 +2,7 @@ package com.example.todoapp;
 
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater
@@ -54,7 +55,8 @@ class DashboardActivity : AppCompatActivity() {
         rv_dashboard.adapter = DashboardAdapter(this, dbHandler.getToDos())
     }
 
-    class DashboardAdapter(val context : Context, val list: MutableList<ToDo>) : RecyclerView.Adapter<DashboardAdapter.ViewHolder>() {
+    class DashboardAdapter(val context : Context, val list: MutableList<ToDo>) :
+        RecyclerView.Adapter<DashboardAdapter.ViewHolder>() {
         class ViewHolder(v : View) : RecyclerView.ViewHolder(v) {
             val toDoName : TextView = v.findViewById(R.id.tv_todo_name)
         }
@@ -69,6 +71,13 @@ class DashboardActivity : AppCompatActivity() {
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             holder.toDoName.text = list[position].name
+
+            holder.toDoName.setOnClickListener {
+                val intent = Intent(context, ItemActivity::class.java)
+                intent.putExtra(INTENT_TODO_ID, list[position].id)
+                intent.putExtra(INTENT_TODO_NAME, list[position].name)
+                context.startActivity(intent)
+            }
         }
     }
 }
