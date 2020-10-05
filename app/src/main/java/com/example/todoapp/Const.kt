@@ -16,3 +16,8 @@ const val COL_IS_COLPLETED = "isCompleted"
 
 const val INTENT_TODO_ID = "TodoId"
 const val INTENT_TODO_NAME = "TodoName"
+
+const val TABLE_USUARIO = "Usuario"
+const val COL_ID_USUARIO = "id"
+const val COL_EMAIL = "email"
+const val COL_SENHA = "senha"

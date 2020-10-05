@@ -5,5 +5,10 @@
     <string name="delete">Delete</string>
     <string name="mark_as_completed">Mark as completed</string>
     <string name="reset">Reset</string>
-
+    <string name="welcome">Bem Vindo!</string>
+    <string name="login_username">Email</string>
+    <string name="password">Senha</string>
+    <string name="button_next">Login</string>
+    <string name="button_cancel">Cancelar</string>
+    <string name="version_app">1.0.0</string>
 </resources>

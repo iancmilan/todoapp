@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.example.todoapp.DTO.ToDo
 import com.example.todoapp.DTO.ToDoItem
+import com.example.todoapp.DTO.Usuario
+import java.lang.Exception
 
 class DBHandler(val context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION){
     override fun onCreate(db: SQLiteDatabase) {
@@ -21,8 +23,14 @@ class DBHandler(val context: Context) : SQLiteOpenHelper(context, DB_NAME, null,
                     "$COL_ITEM_NAME varchar," +
                     "$COL_IS_COLPLETED integer);"
 
+        val createUsuarioTable = "CREATE TABLE $TABLE_USUARIO(" +
+                "$COL_ID_USUARIO integer PRIMARY KEY AUTOINCREMENT, " +
+                "$COL_EMAIL varchar(100)," +
+                "$COL_SENHA varchar(100);"
+
         db.execSQL(createToDoTable)
         db.execSQL(createToDoItemTable)
+        db.execSQL(createUsuarioTable)
     }
 
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
@@ -135,6 +143,29 @@ class DBHandler(val context: Context) : SQLiteOpenHelper(context, DB_NAME, null,
 
         queryResult.close()
         return result
+    }
+
+    fun createUser(usuario: Usuario): Boolean{
+        val db = writableDatabase
+        val cv = ContentValues()
+        cv.put(COL_EMAIL, usuario.email)
+        cv.put(COL_SENHA, usuario.senha)
+
+        val result = db.insert(TABLE_USUARIO, null, cv)
+        return return result != (-1).toLong()
+    }
+
+    fun makeLogin(usuario: Usuario): Boolean {
+        val db = readableDatabase
+        try {
+            val queryResult = db.rawQuery("SELECT * FROM $TABLE_USUARIO WHERE $COL_EMAIL = ${usuario.email} and $COL_SENHA = ${usuario.senha}", null)
+            if (queryResult != null){
+                return true
+                queryResult.close()
+            }
+        }catch (e: Exception){}
+
+        return false
     }
 
 }
