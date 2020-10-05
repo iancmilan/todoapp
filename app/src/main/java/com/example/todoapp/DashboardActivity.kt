@@ -28,11 +28,11 @@ class DashboardActivity : AppCompatActivity() {
         rv_dashboard.layoutManager = LinearLayoutManager(this)
         fab_dashboard.setOnClickListener {
             val dialog = AlertDialog.Builder(this)
-            dialog.setTitle("Add ToDo")
+            dialog.setTitle("Adicionar tarefa")
             val view = layoutInflater.inflate(R.layout.dialog_dashboard, null)
             val toDoName = view.findViewById<EditText>(R.id.ev_todo)
             dialog.setView(view)
-            dialog.setPositiveButton("Add") { _: DialogInterface, _: Int ->
+            dialog.setPositiveButton("Adicionar") { _: DialogInterface, _: Int ->
                 if (toDoName.text.isNotEmpty()) {
                     val toDo = ToDo()
                     toDo.name = toDoName.text.toString()
@@ -40,26 +40,26 @@ class DashboardActivity : AppCompatActivity() {
                     refreshList()
                 }
             }
-            dialog.setNegativeButton("Cancel") { _: DialogInterface, _: Int -> }
+            dialog.setNegativeButton("Cancelar") { _: DialogInterface, _: Int -> }
             dialog.show()
         }
     }
 
     fun updateToDo(toDo: ToDo){
         val dialog = AlertDialog.Builder(this)
-        dialog.setTitle("Update ToDo")
+        dialog.setTitle("Atualizar tarefa")
         val view = layoutInflater.inflate(R.layout.dialog_dashboard, null)
         val toDoName = view.findViewById<EditText>(R.id.ev_todo)
         toDoName.setText(toDo.name)
         dialog.setView(view)
-        dialog.setPositiveButton("Update") { _: DialogInterface, _: Int ->
+        dialog.setPositiveButton("Atualizar") { _: DialogInterface, _: Int ->
             if (toDoName.text.isNotEmpty()) {
                 toDo.name = toDoName.text.toString()
                 dbHandler.updateToDo(toDo)
                 refreshList()
             }
         }
-        dialog.setNegativeButton("Cancel") { _: DialogInterface, _: Int -> }
+        dialog.setNegativeButton("Cancelar") { _: DialogInterface, _: Int -> }
         dialog.show()
     }
 
@@ -108,13 +108,13 @@ class DashboardActivity : AppCompatActivity() {
                         }
                         R.id.menu_delete->{
                             val dialog = AlertDialog.Builder(activity)
-                            dialog.setTitle("Are you sure?")
-                            dialog.setMessage("Do you want to delete this task?")
-                            dialog.setPositiveButton("Continue") { _: DialogInterface, _: Int ->
+                            dialog.setTitle("Você tem certeza?")
+                            dialog.setMessage("Você deseja excluir essa tarefa?")
+                            dialog.setPositiveButton("Continuar") { _: DialogInterface, _: Int ->
                                 activity.dbHandler.deleteToDo(list[position].id)
                                 activity.refreshList()
                             }
-                            dialog.setNegativeButton("Cancel") { _: DialogInterface, _: Int ->
+                            dialog.setNegativeButton("Cancelar") { _: DialogInterface, _: Int ->
                             }
                             dialog.show()
                         }

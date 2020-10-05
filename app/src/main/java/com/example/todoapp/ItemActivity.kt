@@ -39,11 +39,11 @@ class ItemActivity : AppCompatActivity() {
 
         fab_item.setOnClickListener {
             val dialog = AlertDialog.Builder(this)
-            dialog.setTitle("Add ToDo Item")
+            dialog.setTitle("Adicionar subtarefa")
             val view = layoutInflater.inflate(R.layout.dialog_dashboard, null)
             val toDoName = view.findViewById<EditText>(R.id.ev_todo)
             dialog.setView(view)
-            dialog.setPositiveButton("Add") { _: DialogInterface, _: Int ->
+            dialog.setPositiveButton("Adicionar") { _: DialogInterface, _: Int ->
                 if (toDoName.text.isNotEmpty()) {
                     val item = ToDoItem()
                     item.itemName = toDoName.text.toString()
@@ -53,19 +53,19 @@ class ItemActivity : AppCompatActivity() {
                     refreshList()
                 }
             }
-            dialog.setNegativeButton("Cancel") { _: DialogInterface, _: Int -> }
+            dialog.setNegativeButton("Cancelar") { _: DialogInterface, _: Int -> }
             dialog.show()
         }
     }
 
     fun updateItem(item: ToDoItem){
         val dialog = AlertDialog.Builder(this)
-        dialog.setTitle("Update ToDo Item")
+        dialog.setTitle("Atualizar subtarefa")
         val view = layoutInflater.inflate(R.layout.dialog_dashboard, null)
         val toDoName = view.findViewById<EditText>(R.id.ev_todo)
         toDoName.setText(item.itemName)
         dialog.setView(view)
-        dialog.setPositiveButton("Update") { _: DialogInterface, _: Int ->
+        dialog.setPositiveButton("Atualizar") { _: DialogInterface, _: Int ->
             if (toDoName.text.isNotEmpty()) {
                 item.itemName = toDoName.text.toString()
                 item.toDoId = todoId
@@ -74,7 +74,7 @@ class ItemActivity : AppCompatActivity() {
                 refreshList()
             }
         }
-        dialog.setNegativeButton("Cancel") { _: DialogInterface, _: Int -> }
+        dialog.setNegativeButton("Cancelar") { _: DialogInterface, _: Int -> }
         dialog.show()
     }
 
@@ -114,13 +114,13 @@ class ItemActivity : AppCompatActivity() {
 
             holder.delete.setOnClickListener {
                 val dialog = AlertDialog.Builder(activity)
-                dialog.setTitle("Are you sure?")
-                dialog.setMessage("Do you want to delete this item?")
-                dialog.setPositiveButton("Continue") { _: DialogInterface, _: Int ->
+                dialog.setTitle("Você tem certeza?")
+                dialog.setMessage("Você deseja excluir essa subtarefa?")
+                dialog.setPositiveButton("Continuar") { _: DialogInterface, _: Int ->
                     activity.dbHandler.deleteToDoItem(list[position].id)
                     activity.refreshList()
                 }
-                dialog.setNegativeButton("Cancel") { _: DialogInterface, _: Int ->
+                dialog.setNegativeButton("Cancelar") { _: DialogInterface, _: Int ->
                 }
                 dialog.show()
             }

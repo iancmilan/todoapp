@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">ToDoApp</string>
 
-    <string name="edit">Edit</string>
-    <string name="delete">Delete</string>
-    <string name="mark_as_completed">Mark as completed</string>
-    <string name="reset">Reset</string>
+    <string name="edit">Editar</string>
+    <string name="delete">Deletar</string>
+    <string name="mark_as_completed">Marcar como completa</string>
+    <string name="reset">Resetar</string>
 
 </resources>
