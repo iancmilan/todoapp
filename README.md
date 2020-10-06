@@ -25,7 +25,7 @@ Linguagens:
 
 ## :memo: Licença
 
-Esse projeto está sobre a [MIT License](LICENSE).
+Esse projeto está sob a licença [MIT](LICENSE).
 
 <!-- Badges -->
 [top_language]: https://img.shields.io/github/languages/top/iancmilan/todoapp?style=flat-square
