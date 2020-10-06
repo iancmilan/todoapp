@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
+import android.util.Log
 import android.widget.Toast
 import com.example.todoapp.DTO.Usuario
 import com.google.android.material.textfield.TextInputEditText
@@ -21,17 +22,18 @@ class LoginActivity : AppCompatActivity() {
 
         next_button.setOnClickListener({
             val view = layoutInflater.inflate(R.layout.activity_login, null)
-            val email = view.findViewById<TextInputLayout>(R.id.email_text_input)
-            val senha = view.findViewById<TextInputLayout>(R.id.email_text_input)
-            if (!isPasswordValid(email.editText?.text!!)){
+            val email = view.findViewById<TextInputEditText>(R.id.email_edit_text)
+            val senha = view.findViewById<TextInputEditText>(R.id.password_edit_text)
+            Log.d("Print", email.text.toString())
+            if (isPasswordValid(email.text!!)){
                 startActivity(Intent(this, DashboardActivity::class.java))
             }else {
-                Toast.makeText(application, "Informar email ${email.editText?.text} e senha ${senha.editText?.text}", Toast.LENGTH_LONG).show()
+                Toast.makeText(application, "Informar email ${email.text} e senha ${senha.text}", Toast.LENGTH_LONG).show()
             }
         })
 
-        cancel_button.setOnClickListener({
-            startActivity(Intent(this, MainActivity::class.java))
+        register_button.setOnClickListener({
+            startActivity(Intent(this, RegisterActivity::class.java))
         })
     }
 
