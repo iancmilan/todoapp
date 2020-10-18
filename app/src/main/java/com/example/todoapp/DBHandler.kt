@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 import com.example.todoapp.DTO.ToDo
 import com.example.todoapp.DTO.ToDoItem
 import com.example.todoapp.DTO.Usuario
@@ -11,10 +12,19 @@ import java.lang.Exception
 
 class DBHandler(val context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION){
     override fun onCreate(db: SQLiteDatabase) {
+
+        val createUsuarioTable = "CREATE TABLE $TABLE_USUARIO(" +
+                "$COL_ID_USUARIO integer PRIMARY KEY AUTOINCREMENT, " +
+                "$COL_EMAIL varchar(100)," +
+                "$COL_SENHA varchar(100));"
+
         val createToDoTable = "  CREATE TABLE $TABLE_TODO (" +
                 "$COL_ID integer PRIMARY KEY AUTOINCREMENT," +
+                "$COL_ID_TABLE_USUARIO integet "
                 "$COL_CREATED_AT datetime DEFAULT CURRENT_TIMESTAMP," +
-                "$COL_NAME varchar);"
+                "$COL_NAME varchar," +
+                "FOREIGN KEY($COL_ID_TABLE_USUARIO) REFERENCES $TABLE_USUARIO($COL_ID_USUARIO)"
+
         val createToDoItemTable =
             "CREATE TABLE $TABLE_TODO_ITEM (" +
                     "$COL_ID integer PRIMARY KEY AUTOINCREMENT," +
@@ -23,14 +33,10 @@ class DBHandler(val context: Context) : SQLiteOpenHelper(context, DB_NAME, null,
                     "$COL_ITEM_NAME varchar," +
                     "$COL_IS_COLPLETED integer);"
 
-        val createUsuarioTable = "CREATE TABLE $TABLE_USUARIO(" +
-                "$COL_ID_USUARIO integer PRIMARY KEY AUTOINCREMENT, " +
-                "$COL_EMAIL varchar(100)," +
-                "$COL_SENHA varchar(100);"
-
         db.execSQL(createToDoTable)
         db.execSQL(createToDoItemTable)
         db.execSQL(createUsuarioTable)
+
     }
 
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
@@ -150,22 +156,17 @@ class DBHandler(val context: Context) : SQLiteOpenHelper(context, DB_NAME, null,
         val cv = ContentValues()
         cv.put(COL_EMAIL, usuario.email)
         cv.put(COL_SENHA, usuario.senha)
-
         val result = db.insert(TABLE_USUARIO, null, cv)
-        return return result != (-1).toLong()
+
+        return result != (-1).toLong()
     }
 
     fun makeLogin(usuario: Usuario): Boolean {
+        val result : MutableList<Usuario> = ArrayList()
+
         val db = readableDatabase
-        try {
-            val queryResult = db.rawQuery("SELECT * FROM $TABLE_USUARIO WHERE $COL_EMAIL = ${usuario.email} and $COL_SENHA = ${usuario.senha}", null)
-            if (queryResult != null){
-                return true
-                queryResult.close()
-            }
-        }catch (e: Exception){}
-
-        return false
+        val query = "SELECT * FROM $TABLE_USUARIO WHERE $COL_EMAIL = '${usuario.email}'"
+        val queryResult = db.rawQuery(query, null)
+        return queryResult.count > 0
     }
-
 }

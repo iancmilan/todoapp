@@ -8,36 +8,57 @@ import android.util.Log
 import android.widget.Toast
 import com.example.todoapp.DTO.Usuario
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_login.view.*
 
 class LoginActivity : AppCompatActivity() {
     lateinit var dbHandler: DBHandler
+    private var usuario = Usuario()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         dbHandler = DBHandler(this)
 
+        val email = findViewById<TextInputEditText>(R.id.email_edit_text)
+        val senha = findViewById<TextInputEditText>(R.id.password_edit_text)
 
-        next_button.setOnClickListener({
-            val view = layoutInflater.inflate(R.layout.activity_login, null)
-            val email = view.findViewById<TextInputEditText>(R.id.email_edit_text)
-            val senha = view.findViewById<TextInputEditText>(R.id.password_edit_text)
-            Log.d("Print", email.text.toString())
-            if (isPasswordValid(email.text!!)){
-                startActivity(Intent(this, DashboardActivity::class.java))
-            }else {
-                Toast.makeText(application, "Informar email ${email.text} e senha ${senha.text}", Toast.LENGTH_LONG).show()
+
+        cadastrar_button.setOnClickListener {
+            if (isLoginAndPasswordValid(email, senha)) {
+                login(email, senha)
+            } else {
+                Toast.makeText(
+                    application,
+                    "Email ou senha inválido, tente novamente!",
+                    Toast.LENGTH_LONG
+                ).show()
             }
-        })
+        }
 
         register_button.setOnClickListener({
             startActivity(Intent(this, RegisterActivity::class.java))
         })
     }
 
-    private fun isPasswordValid(text: Editable?): Boolean{
-        return text != null && text.length >= 4
+    private fun isLoginAndPasswordValid(email: TextInputEditText, senha: TextInputEditText): Boolean{
+        if (email?.text?.length != 0 && senha?.text?.length != 0){
+            return true
+        }
+        else{
+            email.setError("Inserir email")
+            senha.setError("Inserir senha")
+            return false
+        }
+    }
+
+    private fun login(email: TextInputEditText, senha: TextInputEditText){
+            val usuario = Usuario();
+            usuario.email = email.text.toString()
+            usuario.senha = senha.text.toString()
+            val response = dbHandler.makeLogin(usuario)
+            if(response){
+                startActivity(Intent(this, DashboardActivity::class.java))
+            }else{
+                Toast.makeText(application, "Email ou senha invalido, tente novamente ou cadastre-se", Toast.LENGTH_LONG)
+            }
     }
 }

@@ -8,8 +8,10 @@
     <string name="welcome">Bem Vindo!</string>
     <string name="login_username">Email</string>
     <string name="password">Senha</string>
+    <string name="password_confirm">Confirmar senha</string>
     <string name="button_next">Login</string>
     <string name="button_register">Registrar</string>
+    <string name="button_cadastrar">Cadastrar</string>
     <string name="button_cancel">Cancelar</string>
     <string name="register">Cadastro de Usuário</string>
     <string name="version_app">1.0.0</string>
