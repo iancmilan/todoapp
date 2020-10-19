@@ -31,7 +31,6 @@ Ferramenta para o desenvolvimento:
 Linguagens:
 
 - [Kotlin](https://kotlinlang.org/)
-- [Java](https://www.java.com/pt_BR/)
 
 ## :memo: Licença
 
