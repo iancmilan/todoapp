@@ -161,11 +161,9 @@ class DBHandler(val context: Context) : SQLiteOpenHelper(context, DB_NAME, null,
         return result != (-1).toLong()
     }
 
-    fun makeLogin(usuario: Usuario): Boolean {
-        val result : MutableList<Usuario> = ArrayList()
-
+    fun makeLogin(usuario: Usuario): Boolean{
         val db = readableDatabase
-        val query = "SELECT * FROM $TABLE_USUARIO WHERE $COL_EMAIL = '${usuario.email}'"
+        val query = "SELECT * FROM $TABLE_USUARIO WHERE $COL_EMAIL = '${usuario.email}' COL_$COL_SENHA =' ${usuario.senha}'"
         val queryResult = db.rawQuery(query, null)
         return queryResult.count > 0
     }
