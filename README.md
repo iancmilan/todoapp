@@ -8,7 +8,7 @@
 
 </div>
 
-## Layout e funcionalidades do aplicativo
+## :iphone: Layout e funcionalidades do aplicativo
 
 <p align="center">
   <img alt="Login" title="Login" src=".github/Login.png" width="150px">
