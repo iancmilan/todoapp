@@ -1,6 +1,6 @@
 <div align="center">
 
-![img](.github/todolist.png)
+<img alt="Icon" title="Icon" src=".github/Icon.png" width="220px">
 
 ![top_language] ![repo-size] ![license]
 
