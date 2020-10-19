@@ -8,6 +8,16 @@
 
 </div>
 
+## Layout e funcionalidades do aplicativo
+
+<p align="center">
+  <img alt="Login" title="Login" src=".github/Login.png" width="150px">
+  <img alt="Cadastro" title="Cadastro" src=".github/Cadastro.png" width="150px">
+  <img alt="Splash" title="Splash" src=".github/Splash.gif" width="150px">
+  <img alt="Funcionalidades1" title="Funcionalidades1" src=".github/Funcionalidades1.gif" width="150px">
+  <img alt="Funcionalidades2" title="Funcionalidades2" src=".github/Funcionalidades2.gif" width="150px">
+</p>
+
 ## :bookmark: Sobre
 
 O **ToDoApp** é um aplicativo de to-do list, no qual o usuário pode criar tarefas e subtarefas. Apesar de simples é uma ótima ferramenta de produtividade pessoal.
