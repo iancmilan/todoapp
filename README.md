@@ -1,6 +1,6 @@
 <div align="center">
 
-<img alt="Icon" title="Icon" src=".github/Icon.png" width="220px">
+<img alt="Todoapp" title="Todoapp" src=".github/todoapp.png" >
 
 ![top_language] ![repo-size] ![license]
 
@@ -37,6 +37,6 @@ Linguagens:
 Esse projeto está sob a licença [MIT](LICENSE).
 
 <!-- Badges -->
-[top_language]: https://img.shields.io/github/languages/top/iancmilan/todoapp?style=flat-square
-[repo-size]: https://img.shields.io/github/repo-size/iancmilan/todoapp?style=flat-square
-[license]: https://img.shields.io/github/license/iancmilan/proffy?style=flat-square
+[top_language]: https://img.shields.io/github/languages/top/iancmilan/todoapp?style=flat-square&color=00c64c&labelColor=121214
+[repo-size]: https://img.shields.io/github/repo-size/iancmilan/todoapp?style=flat-square&color=00c64c&labelColor=121214
+[license]: https://img.shields.io/github/license/iancmilan/proffy?style=flat-square&color=00c64c&labelColor=121214
